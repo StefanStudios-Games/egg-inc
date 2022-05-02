@@ -1,3 +1,38 @@
+function create_chicken () {
+    chicken = sprites.createProjectileFromSide(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f . . . . . . . . . 
+        . . . f 1 1 1 f . . . . . . . . 
+        . . . f 1 f 1 1 f . . . . . . . 
+        . 5 5 5 1 1 1 1 1 f . . . . . . 
+        . . . f 1 1 1 1 1 1 f . . . . . 
+        . . . . f 1 1 1 1 1 1 f . . . . 
+        . . . . f f 1 1 1 d 1 1 f f . . 
+        . . . . f 1 1 1 1 1 d d 1 1 f . 
+        . . . . f f 1 d 1 1 1 1 d 1 f . 
+        . . . . . f 1 1 d 1 1 1 d 1 f . 
+        . . . . . f f 1 1 d d d 1 1 f . 
+        . . . . . . f f f f 1 1 f f f . 
+        . . . . . . . . f . f f f . . . 
+        . . . . . . . . f . . f . . . . 
+        . . . . . . . f f . f f . . . . 
+        `, 0, 0)
+    chicken.setPosition(143, 61)
+    chicken.vx = -65
+    pause(500)
+    chicken.vx = 0
+    chicken.vy = -65
+    pause(500)
+    chicken.vy = 0
+    chicken.vx = -65
+    pause(1000)
+    chicken.vx = 0
+    chicken.destroy()
+}
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    create_chicken()
+})
+let chicken: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -120,24 +155,6 @@ scene.setBackgroundImage(img`
     fffffff1111111111111ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     fffffff1111111111111111111ffffffffffffffffffffff111111111fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
-let chicken = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . f f f . . . . . . . . . 
-    . . . f 1 1 1 f . . . . . . . . 
-    . . . f 1 f 1 1 f . . . . . . . 
-    . 5 5 5 1 1 1 1 1 f . . . . . . 
-    . . . f 1 1 1 1 1 1 f . . . . . 
-    . . . . f 1 1 1 1 1 1 f . . . . 
-    . . . . f f 1 1 1 d 1 1 f f . . 
-    . . . . f 1 1 1 1 1 d d 1 1 f . 
-    . . . . f f 1 d 1 1 1 1 d 1 f . 
-    . . . . . f 1 1 d 1 1 1 d 1 f . 
-    . . . . . f f 1 1 d d d 1 1 f . 
-    . . . . . . f f f f 1 1 f f f . 
-    . . . . . . . . f . f f f . . . 
-    . . . . . . . . f . . f . . . . 
-    . . . . . . . f f . f f . . . . 
-    `, SpriteKind.Player)
 let clickr = sprites.create(img`
     ..........ffffffffffffffffffffffffffffffffffffffffffffffffff..........
     .........ff222222222222222222222222222222222222222222222222ff.........
