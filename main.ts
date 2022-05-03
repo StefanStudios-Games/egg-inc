@@ -1,25 +1,73 @@
 function create_chicken () {
     chicken = sprites.createProjectileFromSide(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f . . . . . . . . . 
-        . . . f 1 1 1 f . . . . . . . . 
-        . . . f 1 f 1 1 f . . . . . . . 
-        . 5 5 5 1 1 1 1 1 f . . . . . . 
-        . . . f 1 1 1 1 1 1 f . . . . . 
-        . . . . f 1 1 1 1 1 1 f . . . . 
-        . . . . f f 1 1 1 d 1 1 f f . . 
-        . . . . f 1 1 1 1 1 d d 1 1 f . 
-        . . . . f f 1 d 1 1 1 1 d 1 f . 
-        . . . . . f 1 1 d 1 1 1 d 1 f . 
-        . . . . . f f 1 1 d d d 1 1 f . 
-        . . . . . . f f f f 1 1 f f f . 
-        . . . . . . . . f . f f f . . . 
-        . . . . . . . . f . . f . . . . 
-        . . . . . . . f f . f f . . . . 
+        . . f f . . . . . 
+        . f 1 1 f . . . . 
+        5 5 1 1 1 f . . . 
+        . . f 1 1 1 f f . 
+        . . f 1 1 1 d 1 f 
+        . . f 1 d 1 1 d f 
+        . . . f 1 d d 1 f 
+        . . . f f f f f f 
+        . . . . f . f . . 
+        . . . f f f f . . 
         `, 0, 0)
+    animation.runImageAnimation(
+    chicken,
+    [img`
+        . . f f . . . . . . 
+        . f 1 1 f . . . . . 
+        5 5 1 1 1 f . . . . 
+        . . f 1 1 1 f f . . 
+        . . f 1 1 1 d 1 f . 
+        . . f 1 d 1 1 d f . 
+        . . . f 1 d d 1 f . 
+        . . . f f f f f f . 
+        . . . . f . f . . . 
+        . . . f f f f . . . 
+        . . . . . . . . . . 
+        `,img`
+        . . f f . . . . . . 
+        . f 1 1 f . . . . . 
+        5 5 1 1 1 f . . . . 
+        . . f 1 1 1 f f . . 
+        . . f 1 1 1 d 1 f . 
+        . . f 1 d 1 1 d f . 
+        . . . f 1 d d 1 f . 
+        . . . f f f f f f . 
+        . . . . f . . f . . 
+        . . f f . . f f . . 
+        . . . . . . . . . . 
+        `,img`
+        . . f f . . . . . . 
+        . f 1 1 f . . . . . 
+        5 5 1 1 1 f . . . . 
+        . . f 1 1 1 f f . . 
+        . . f 1 1 1 d 1 f . 
+        . . f 1 d 1 1 d f . 
+        . . . f 1 d d 1 f . 
+        . . . f f f f f f . 
+        . . . . f . . f . . 
+        . . . f f . f f . . 
+        . . . . . . . . . . 
+        `,img`
+        . . f f . . . . . . 
+        . f 1 1 f . . . . . 
+        5 5 1 1 1 f . . . . 
+        . . f 1 1 1 f f . . 
+        . . f 1 1 1 d 1 f . 
+        . . f 1 d 1 1 d f . 
+        . . . f 1 d d 1 f . 
+        . . . f f f f f f . 
+        . . . . . f f . . . 
+        . . . . f f f . . . 
+        . . . . . . . . . . 
+        `],
+    50,
+    true
+    )
     chicken.setPosition(143, 61)
     chicken.vx = -65
-    pause(500)
+    pause(550)
     chicken.vx = 0
     chicken.vy = -65
     pause(500)
