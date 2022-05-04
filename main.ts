@@ -20,7 +20,7 @@ function create_chicken () {
         . . . f f f f . . 
         `, -55, 0)
     chicken.setKind(SpriteKind.chicken)
-    chicken.setPosition(143, randint(55, 66))
+    chicken.setPosition(143, randint(55, 63))
     animation.runImageAnimation(
     chicken,
     [img`
@@ -194,8 +194,8 @@ function createRallyPoints () {
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.house, function (sprite, otherSprite) {
     pause(200)
     sprite.destroy()
-    info.changeScoreBy(1)
     house1chickens += 1
+    info.setScore(house1chickens)
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
@@ -241,12 +241,12 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
-let house1chickens = 0
 let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
 let chicken: Sprite = null
+let house1chickens = 0
 let clickr: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -426,6 +426,7 @@ let house1 = sprites.create(img`
     feeeeeeeefffffffffffffffeeeeeeeefff...............
     fffffffffffffffffffffffffffffffff.................
     `, SpriteKind.house)
+house1chickens = 0
 clickr.setPosition(80, 105)
-house1.setPosition(85, 7)
+house1.setPosition(85, 2)
 createRallyPoints()
