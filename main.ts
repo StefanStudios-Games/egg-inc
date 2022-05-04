@@ -4,6 +4,7 @@ namespace SpriteKind {
     export const Point2 = SpriteKind.create()
     export const Point3 = SpriteKind.create()
     export const Point4 = SpriteKind.create()
+    export const house = SpriteKind.create()
 }
 function create_chicken () {
     chicken = sprites.createProjectileFromSide(img`
@@ -190,6 +191,12 @@ function createRallyPoints () {
     rallyPoint3.setPosition(70, 25)
     rallyPoint4.setPosition(25, 25)
 }
+sprites.onOverlap(SpriteKind.chicken, SpriteKind.house, function (sprite, otherSprite) {
+    pause(200)
+    sprite.destroy()
+    info.changeScoreBy(1)
+    house1chickens += 1
+})
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
         ..........ffffffffffffffffffffffffffffffffffffffffffffffffff..........
@@ -234,6 +241,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
+let house1chickens = 0
 let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
@@ -389,37 +397,35 @@ clickr = sprites.create(img`
     .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
     `, SpriteKind.Player)
 let house1 = sprites.create(img`
-    ..........feeeefeeef..........
-    .........feeeeefeeeef.........
-    .........feeeeefeeeef.........
-    ........feeeeeefeeeeef........
-    .......feeeeeeefeeeeeef.......
-    .......feeeeeff2ffeeeef.......
-    ......feeeeef22f22feeeef......
-    .....feeeeef2ff1ff2feeeef.....
-    .....feeeff2f88188f2ffeef.....
-    ....feeef22f1111111f22feef....
-    ...feeef22f888818888f22feef...
-    ...feff222fffffffffff222fff...
-    ..fff222222222222222222222ff..
-    ..ffffffffffffffffffffffffff..
-    ..f444444e4444444444e444444f..
-    ..f444444e4444444444e444444f..
-    ..feeeeeeeeeeeeeeeeeeeeeeeef..
-    ..fe4444444444e4444444444e4f..
-    ..fefffff4fffffffff444444e4f..
-    ..fef818fefffffffffeeeeeeeef..
-    ..f4f111f4fffffffff44e44444f..
-    ..f4f818f4fffffffff44e44444f..
-    ..fefffffefffffffffeeeeeeeef..
-    ..f4e44444fffffffff444444e4f..
-    ..f4e44444fffffffff444444e4f..
-    ..feeeeeeefffffffffeeeeeeeef..
-    ..f4444e44fffffffff44444444f..
-    ..f4444e44fffffffff44444444f..
-    ..feeeeeeefffffffffeeeeeeeef..
-    ..f44e4444fffffffff44e44444f..
-    `, SpriteKind.Food)
+    fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeff.
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeff...
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeff.....
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeff.......
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeff.........
+    feeeeeeeefffffffffffffffeeeeeeeefeeeeff...........
+    feeeeeeeefffffffffffffffeeeeeeeefeeff.............
+    feeeeeeeefffffffffffffffeeeeeeeefff...............
+    fffffffffffffffffffffffffffffffff.................
+    `, SpriteKind.house)
 clickr.setPosition(80, 105)
-house1.setPosition(75, 7)
+house1.setPosition(85, 7)
 createRallyPoints()
