@@ -17,7 +17,7 @@ function create_chicken () {
         . . . f f f f . . 
         `, -55, 0)
     chicken.setKind(SpriteKind.chicken)
-    chicken.setPosition(143, 61)
+    chicken.setPosition(143, randint(55, 66))
     animation.runImageAnimation(
     chicken,
     [img`
