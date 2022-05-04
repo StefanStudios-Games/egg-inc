@@ -104,6 +104,48 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         `)
     create_chicken()
 })
+function createRallyPoints () {
+    rallyPoint1 = sprites.create(img`
+        . . . . . . . . f . . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . f f f f f . . . . . 
+        . . . . . f f f f f f f . . . . 
+        . . . . f f f f f f f f f . . . 
+        . . . . f f f f f f f f f . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        . . . . . . . f f f . . . . . . 
+        `, SpriteKind.Point1)
+    rallyPoint2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f . . . . . . . . . . 
+        . . . f f f . . . . . . . . . . 
+        . . f f f f . . . . . . . . . . 
+        . f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        . f f f f f f f f f f f f f f f 
+        . . f f f f . . . . . . . . . . 
+        . . . f f f . . . . . . . . . . 
+        . . . . f f . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Point2)
+    rallyPoint1.setFlag(SpriteFlag.Invisible, true)
+    rallyPoint2.setFlag(SpriteFlag.Invisible, true)
+    rallyPoint1.setPosition(95, 56)
+    rallyPoint2.setPosition(100, 20)
+}
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
         ..........ffffffffffffffffffffffffffffffffffffffffffffffffff..........
@@ -140,6 +182,8 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
+let rallyPoint2: Sprite = null
+let rallyPoint1: Sprite = null
 let chicken: Sprite = null
 let clickr: Sprite = null
 scene.setBackgroundImage(img`
@@ -290,44 +334,5 @@ clickr = sprites.create(img`
     .......ff2222222222222222222222222222222222222222222222222222ff.......
     .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
     `, SpriteKind.Player)
-let rallyPoint1 = sprites.create(img`
-    . . . . . . . . f . . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . f f f f f . . . . . 
-    . . . . . f f f f f f f . . . . 
-    . . . . f f f f f f f f f . . . 
-    . . . . f f f f f f f f f . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    . . . . . . . f f f . . . . . . 
-    `, SpriteKind.Point1)
-let rallyPoint2 = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . f f . . . . . . . . . . 
-    . . . f f f . . . . . . . . . . 
-    . . f f f f . . . . . . . . . . 
-    . f f f f f f f f f f f f f f f 
-    f f f f f f f f f f f f f f f f 
-    . f f f f f f f f f f f f f f f 
-    . . f f f f . . . . . . . . . . 
-    . . . f f f . . . . . . . . . . 
-    . . . . f f . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Point2)
-rallyPoint1.setFlag(SpriteFlag.Invisible, true)
 clickr.setPosition(80, 105)
-rallyPoint2.setFlag(SpriteFlag.Invisible, true)
-rallyPoint1.setPosition(95, 56)
-rallyPoint2.setPosition(100, 20)
+createRallyPoints()
