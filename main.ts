@@ -2,6 +2,8 @@ namespace SpriteKind {
     export const Point1 = SpriteKind.create()
     export const chicken = SpriteKind.create()
     export const Point2 = SpriteKind.create()
+    export const Point3 = SpriteKind.create()
+    export const Point4 = SpriteKind.create()
 }
 function create_chicken () {
     chicken = sprites.createProjectileFromSide(img`
@@ -73,6 +75,10 @@ function create_chicken () {
     true
     )
 }
+sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point4, function (sprite, otherSprite) {
+    sprite.vx = 0
+    sprite.vy = -55
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     clickr.setImage(img`
         .........5555555555555555555555555555555555555555555555555555555.........
@@ -141,10 +147,48 @@ function createRallyPoints () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Point2)
+    rallyPoint3 = sprites.create(img`
+        . . . . . . . . 2 . . . . . . . 
+        . . . . . . . 2 2 2 . . . . . . 
+        . . . . . . 2 2 7 2 2 . . . . . 
+        . . . . . 2 2 7 7 7 2 2 . . . . 
+        . . . . 2 2 7 7 7 7 7 2 2 . . . 
+        . . . . 2 2 2 2 7 2 2 2 2 . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 7 2 . . . . . . 
+        . . . . . . . 2 2 2 . . . . . . 
+        `, SpriteKind.Point3)
+    rallyPoint4 = sprites.create(img`
+        . . . . . . . . 8 . . . . . . . 
+        . . . . . . . 8 8 8 . . . . . . 
+        . . . . . . 8 8 7 8 8 . . . . . 
+        . . . . . 8 8 7 7 7 8 8 . . . . 
+        . . . . 8 8 7 7 7 7 7 8 8 . . . 
+        . . . . 8 8 8 8 7 8 8 8 8 . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 7 8 . . . . . . 
+        . . . . . . . 8 8 8 . . . . . . 
+        `, SpriteKind.Point4)
     rallyPoint1.setFlag(SpriteFlag.Invisible, true)
     rallyPoint2.setFlag(SpriteFlag.Invisible, true)
     rallyPoint1.setPosition(95, 56)
     rallyPoint2.setPosition(100, 20)
+    rallyPoint3.setPosition(70, 25)
+    rallyPoint4.setPosition(25, 25)
 }
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
@@ -178,10 +222,20 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point2, function (sprite, other
     sprite.vx = -55
     sprite.vy = 0
 })
+sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, otherSprite) {
+    if (randint(1, 2) == 1) {
+        sprite.vx = 0
+        sprite.vy = -55
+    } else {
+        pause(200)
+    }
+})
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, otherSprite) {
     sprite.vx = 0
     sprite.vy = -55
 })
+let rallyPoint4: Sprite = null
+let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
 let chicken: Sprite = null
