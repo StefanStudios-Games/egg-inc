@@ -193,6 +193,46 @@ function createRallyPoints () {
     rallyPoint3.setPosition(70, 25)
     rallyPoint4.setPosition(25, 25)
 }
+function createHouses () {
+    house1 = sprites.create(img`
+        fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeff.
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeff...
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeff.....
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeff.......
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeff.........
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeff...........
+        feeeeeeeefffffffffffffffeeeeeeeefeeff.............
+        feeeeeeeefffffffffffffffeeeeeeeefff...............
+        fffffffffffffffffffffffffffffffff.................
+        `, SpriteKind.house)
+    house1.setPosition(85, 2)
+    house1chickens = 0
+    statsH1 = statusbars.create(20, 5, StatusBarKind.Health)
+    statsH1.positionDirection(CollisionDirection.Bottom)
+    statsH1.attachToSprite(house1, -10, 15)
+    statsH1.setColor(2, 1)
+    statsH1.setBarBorder(1, 15)
+    statsH1.value = 50
+}
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.house, function (sprite, otherSprite) {
     pause(200)
     sprite.destroy()
@@ -243,12 +283,14 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
+let statsH1: StatusBarSprite = null
+let house1chickens = 0
+let house1: Sprite = null
 let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
 let chicken: Sprite = null
-let house1chickens = 0
 let clickr: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -398,37 +440,6 @@ clickr = sprites.create(img`
     .......ff2222222222222222222222222222222222222222222222222222ff.......
     .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
     `, SpriteKind.Player)
-let house1 = sprites.create(img`
-    fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeff.
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeff...
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeff.....
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeff.......
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeeeff.........
-    feeeeeeeefffffffffffffffeeeeeeeefeeeeff...........
-    feeeeeeeefffffffffffffffeeeeeeeefeeff.............
-    feeeeeeeefffffffffffffffeeeeeeeefff...............
-    fffffffffffffffffffffffffffffffff.................
-    `, SpriteKind.house)
-house1chickens = 0
 clickr.setPosition(80, 105)
-house1.setPosition(85, 2)
+createHouses()
 createRallyPoints()
