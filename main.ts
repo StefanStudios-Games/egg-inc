@@ -186,6 +186,8 @@ function createRallyPoints () {
         `, SpriteKind.Point4)
     rallyPoint1.setFlag(SpriteFlag.Invisible, true)
     rallyPoint2.setFlag(SpriteFlag.Invisible, true)
+    rallyPoint3.setFlag(SpriteFlag.Invisible, true)
+    rallyPoint4.setFlag(SpriteFlag.Invisible, true)
     rallyPoint1.setPosition(95, 56)
     rallyPoint2.setPosition(100, 20)
     rallyPoint3.setPosition(70, 25)
