@@ -5,6 +5,47 @@ namespace SpriteKind {
     export const Point3 = SpriteKind.create()
     export const Point4 = SpriteKind.create()
     export const house = SpriteKind.create()
+    export const house2 = SpriteKind.create()
+}
+function createHouse2 () {
+    house2 = sprites.create(img`
+        fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeff.
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeff...
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeff.....
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeff.......
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeff.........
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeff...........
+        feeeeeeeefffffffffffffffeeeeeeeefeeff.............
+        feeeeeeeefffffffffffffffeeeeeeeefff...............
+        fffffffffffffffffffffffffffffffff.................
+        `, SpriteKind.house2)
+    house2.setPosition(30, 2)
+    house2chickens = 0
+    statsH2 = statusbars.create(20, 5, StatusBarKind.Health)
+    statsH2.positionDirection(CollisionDirection.Bottom)
+    statsH2.attachToSprite(statsH2, -10, 15)
+    statsH2.setColor(2, 1)
+    statsH2.setBarBorder(1, 15)
+    statsH2.value = 0
 }
 function create_chicken () {
     chicken = sprites.createProjectileFromSide(img`
@@ -195,7 +236,7 @@ function createRallyPoints () {
     rallyPoint3.setPosition(70, 25)
     rallyPoint4.setPosition(25, 25)
 }
-function createHouses () {
+function createHouse1 () {
     house1 = sprites.create(img`
         fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
         feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
@@ -294,6 +335,9 @@ let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
 let house1chickens = 0
 let chicken: Sprite = null
+let statsH2: StatusBarSprite = null
+let house2chickens = 0
+let house2: Sprite = null
 let clickr: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -444,5 +488,6 @@ clickr = sprites.create(img`
     .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
     `, SpriteKind.Player)
 clickr.setPosition(80, 105)
-createHouses()
+createHouse1()
+createHouse2()
 createRallyPoints()
