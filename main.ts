@@ -6,6 +6,7 @@ namespace SpriteKind {
     export const Point4 = SpriteKind.create()
     export const house = SpriteKind.create()
     export const house2 = SpriteKind.create()
+    export const warning = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.house2, function (sprite, otherSprite) {
     pause(200)
@@ -318,6 +319,38 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
         `)
 })
+function warningHouseFull () {
+    warningHouseFULL = sprites.create(img`
+        ....ffffffffffffffffffffffffffffffffffff....
+        ...f111111111111111111111111111111111111f...
+        ..f11111111111111111111111111111111111111f..
+        .f1112211211211111111111111111111111122111f.
+        f111122112112122212121222122212221111221111f
+        f111122112222121212121221122212211111221111f
+        f111122112112121212121122121111221111221111f
+        f111122112112122212221222122212221111221111f
+        f111122111111111111111111111111111111221111f
+        f111122111111111111111111111111111111221111f
+        f111122111111111111111111111111111111221111f
+        f111122111211111111111122211111212111221111f
+        f111122112121221122211121112121212111221111f
+        f111122112221212122211122212121212111221111f
+        f111122112121211121111121112121212111221111f
+        f111111112121211122211121112221212111111111f
+        .f1112211111111111111111111111111111122111f.
+        ..f11221111111111111111111111111111112211f..
+        ...f111111111111111111111111111111111111f...
+        ....ffffffffffffffffffffffffffffffffffff....
+        `, SpriteKind.warning)
+    warningHouseFULL.setPosition(80, 0)
+    warningHouseFULL.setVelocity(0, 150)
+    pause(200)
+    warningHouseFULL.setVelocity(0, 0)
+    pause(1000)
+    warningHouseFULL.setVelocity(0, -150)
+    pause(200)
+    warningHouseFULL.destroy()
+}
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point2, function (sprite, otherSprite) {
     sprite.vx = -55
     sprite.vy = 0
@@ -334,6 +367,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
+let warningHouseFULL: Sprite = null
 let statsH1: StatusBarSprite = null
 let house1: Sprite = null
 let rallyPoint4: Sprite = null
