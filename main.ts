@@ -7,6 +7,13 @@ namespace SpriteKind {
     export const house = SpriteKind.create()
     export const house2 = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.chicken, SpriteKind.house2, function (sprite, otherSprite) {
+    pause(200)
+    sprite.destroy()
+    house2chickens += 1
+    info.setScore(house2chickens)
+    statsH2.value = house2chickens * 4
+})
 function createHouse2 () {
     house2 = sprites.create(img`
         fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
@@ -122,7 +129,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point4, function (sprite, other
     sprite.vy = -55
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (house1chickens < 25) {
+    if (house2chickens < 25 || house1chickens < 25) {
         clickr.setImage(img`
             .........5555555555555555555555555555555555555555555555555555555.........
             ........552222222222222222222222222222222222222222222222222222255........
@@ -335,9 +342,9 @@ let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
 let house1chickens = 0
 let chicken: Sprite = null
+let house2: Sprite = null
 let statsH2: StatusBarSprite = null
 let house2chickens = 0
-let house2: Sprite = null
 let clickr: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
