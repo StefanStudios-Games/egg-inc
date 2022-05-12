@@ -356,7 +356,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point2, function (sprite, other
     sprite.vy = 0
 })
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, otherSprite) {
-    if (randint(1, 2) == 1 && house1chickens < 25) {
+    if (Math.percentChance(75) && house1chickens < 25) {
         sprite.vx = 0
         sprite.vy = -55
     } else {
