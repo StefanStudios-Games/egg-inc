@@ -289,6 +289,7 @@ function createPointer () {
         . . . . . . f 1 1 f . . 
         . . . . . . . f f . . . 
         `, SpriteKind.pointer)
+    pointer.z = 100
     pointer.setPosition(70, 55)
     controller.moveSprite(pointer)
 }
