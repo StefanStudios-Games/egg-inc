@@ -49,6 +49,7 @@ function createHouse2 () {
     house2.setPosition(30, 2)
     house2chickens = 0
     statsH2 = statusbars.create(20, 5, StatusBarKind.Health)
+    statsH2.z = 50
     statsH2.positionDirection(CollisionDirection.Bottom)
     statsH2.attachToSprite(house2, -10, 15)
     statsH2.setColor(2, 1)
@@ -184,6 +185,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             create_chicken()
         }
     }
+    if (pointer.overlapsWith(house1)) {
+        if (sprites.readDataBoolean(house1popUp, "invisible") == true) {
+            house1popUp.setFlag(SpriteFlag.Invisible, false)
+            sprites.setDataBoolean(house1popUp, "invisible", false)
+        } else {
+            house1popUp.setFlag(SpriteFlag.Invisible, true)
+            sprites.setDataBoolean(house1popUp, "invisible", true)
+        }
+    }
 })
 function createRallyPoints () {
     rallyPoint1 = sprites.create(img`
@@ -290,7 +300,8 @@ function createPointer () {
         . . . . . . . f f . . . 
         `, SpriteKind.pointer)
     pointer.z = 100
-    pointer.setPosition(70, 55)
+    pointer.setPosition(80, 55)
+    pointer.setStayInScreen(true)
     controller.moveSprite(pointer)
 }
 function createHouse1 () {
@@ -327,6 +338,7 @@ function createHouse1 () {
     house1.setPosition(85, 2)
     house1chickens = 0
     statsH1 = statusbars.create(20, 5, StatusBarKind.Health)
+    statsH1.z = 50
     statsH1.positionDirection(CollisionDirection.Bottom)
     statsH1.attachToSprite(house1, -10, 15)
     statsH1.setColor(2, 1)
@@ -392,6 +404,50 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point2, function (sprite, other
     sprite.vx = -55
     sprite.vy = 0
 })
+function createPopUps () {
+    house1popUp = sprites.create(img`
+        ffffffffffffffffffffffffffffffff
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f1f111fff1f1f1fff1f1111f1f1fff1f
+        f1f111f111f1f1f111f1111f1f1f1f1f
+        f1f111fff1f1f1fff1f1111f1f1fff1f
+        f1f111f111f1f1f111f1111f1f1f111f
+        f1fff1fff11f11fff1fff11fff1f111f
+        f111111111111111111111111111111f
+        f141111411111111111111111111111f
+        f141114411111111111111111111111f
+        f144411411111111111111111111111f
+        f141414441111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        f111111111111111111111111111111f
+        ffffffffffffffffffffffffffffffff
+        `, SpriteKind.Player)
+    house1popUp.z = 80
+    house1popUp.setFlag(SpriteFlag.Invisible, true)
+    sprites.setDataBoolean(house1popUp, "invisible", true)
+    house1popUp.setPosition(110, 17)
+}
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, otherSprite) {
     if (Math.percentChance(75) && house1chickens < 25) {
         sprite.vx = 0
@@ -405,11 +461,12 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vy = -55
 })
 let statsH1: StatusBarSprite = null
-let house1: Sprite = null
 let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
+let house1popUp: Sprite = null
+let house1: Sprite = null
 let house1chickens = 0
 let pointer: Sprite = null
 let chicken: Sprite = null
@@ -569,4 +626,5 @@ clickr.setPosition(80, 105)
 createHouse1()
 createHouse2()
 createRallyPoints()
+createPopUps()
 createPointer()
