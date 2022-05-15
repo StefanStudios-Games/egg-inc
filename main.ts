@@ -14,7 +14,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.house2, function (sprite, other
     pause(200)
     sprite.destroy()
     house2chickens += 1
-    statsH2.value = house2chickens * 4
+    statsH2.value = Math.map(house2chickens, 0, 25, 0, 100)
 })
 function createHouse2 () {
     house2 = sprites.create(img`
@@ -355,7 +355,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.house, function (sprite, otherS
     pause(200)
     sprite.destroy()
     house1chickens += 1
-    statsH1.value = house1chickens * 4
+    statsH1.value = Math.map(house1chickens, 0, 25, 0, 100)
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
