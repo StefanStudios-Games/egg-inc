@@ -205,6 +205,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         PopUp1upg.setFlag(SpriteFlag.Invisible, true)
         PopUp1upg.setFlag(SpriteFlag.Ghost, true)
     }
+    if (pointer.overlapsWith(PopUp1upg)) {
+        upgradeHouse1()
+    }
 })
 function createRallyPoints () {
     rallyPoint1 = sprites.create(img`
@@ -552,6 +555,10 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, other
         pause(200)
     }
 })
+function upgradeHouse1 () {
+    sprites.setDataNumber(house1, "level", sprites.readDataNumber(house1, "level") + 1)
+    house1.setImage(house1IMG[sprites.readDataNumber(house1, "level")])
+}
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, otherSprite) {
     sprite.vx = 0
     sprite.vy = -55
