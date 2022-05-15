@@ -154,7 +154,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . 
         `)
     if (pointer.overlapsWith(clickr)) {
-        if (house2chickens < 25 || house1chickens < 25) {
+        if (house2chickens < 25 || house1chickens < MaxCH1) {
             clickr.setImage(img`
                 .........5555555555555555555555555555555555555555555555555555555.........
                 ........552222222222222222222222222222222222222222222222222222255........
@@ -342,6 +342,7 @@ function createHouse1 () {
         fffffffffffffffffffffffffffffffff.................
         `, SpriteKind.house)
     house1.setPosition(85, 2)
+    MaxCH1 = 25
     house1chickens = 0
     statsH1 = statusbars.create(20, 5, StatusBarKind.Health)
     statsH1.z = 50
@@ -355,7 +356,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.house, function (sprite, otherS
     pause(200)
     sprite.destroy()
     house1chickens += 1
-    statsH1.value = Math.map(house1chickens, 0, 25, 0, 100)
+    statsH1.value = Math.map(house1chickens, 0, MaxCH1, 0, 100)
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     clickr.setImage(img`
@@ -479,6 +480,7 @@ let rallyPoint1: Sprite = null
 let PopUp1X: Sprite = null
 let house1popUp: Sprite = null
 let house1: Sprite = null
+let MaxCH1 = 0
 let house1chickens = 0
 let pointer: Sprite = null
 let chicken: Sprite = null
