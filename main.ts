@@ -525,8 +525,21 @@ function createPopUps () {
     PopUp1X.setFlag(SpriteFlag.Invisible, true)
     PopUp1X.setFlag(SpriteFlag.Ghost, true)
     PopUp1X.z = 85
-    PopUp1upg = sprites.create(assets.image`10`, SpriteKind.Upgrade)
-    PopUp1upg.setPosition(84, 27)
+    PopUp1upg = sprites.create(img`
+        .ffffffffffffffffffffffffff.
+        f44444444444444444444444444f
+        f44444444444444444ff4444444f
+        f444f44f4ff444444ffff444444f
+        f444f44f4f4f4444ffffff44444f
+        f444f44f4fff444444ff4444444f
+        f444f44f4f44444444ff4444444f
+        f444f44f4f44444444ff4444444f
+        f4444ff44f44444444ff4444444f
+        f44444444444444444ff4444444f
+        f44444444444444444444444444f
+        .ffffffffffffffffffffffffff.
+        `, SpriteKind.Upgrade)
+    PopUp1upg.setPosition(110, 30)
     PopUp1upg.setFlag(SpriteFlag.Invisible, true)
     PopUp1upg.setFlag(SpriteFlag.Ghost, true)
     PopUp1upg.z = 85
