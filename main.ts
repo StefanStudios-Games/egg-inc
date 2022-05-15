@@ -8,6 +8,7 @@ namespace SpriteKind {
     export const house2 = SpriteKind.create()
     export const warning = SpriteKind.create()
     export const pointer = SpriteKind.create()
+    export const X = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.house2, function (sprite, otherSprite) {
     pause(200)
@@ -189,10 +190,15 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (sprites.readDataBoolean(house1popUp, "invisible") == true) {
             house1popUp.setFlag(SpriteFlag.Invisible, false)
             sprites.setDataBoolean(house1popUp, "invisible", false)
-        } else {
-            house1popUp.setFlag(SpriteFlag.Invisible, true)
-            sprites.setDataBoolean(house1popUp, "invisible", true)
+            PopUp1X.setFlag(SpriteFlag.Invisible, false)
+            PopUp1X.setFlag(SpriteFlag.Ghost, false)
         }
+    }
+    if (pointer.overlapsWith(PopUp1X)) {
+        house1popUp.setFlag(SpriteFlag.Invisible, true)
+        sprites.setDataBoolean(house1popUp, "invisible", true)
+        PopUp1X.setFlag(SpriteFlag.Invisible, true)
+        PopUp1X.setFlag(SpriteFlag.Ghost, true)
     }
 })
 function createRallyPoints () {
@@ -300,9 +306,9 @@ function createPointer () {
         . . . . . . . f f . . . 
         `, SpriteKind.pointer)
     pointer.z = 100
-    pointer.setPosition(80, 55)
+    pointer.setPosition(8, 55)
     pointer.setStayInScreen(true)
-    controller.moveSprite(pointer)
+    controller.moveSprite(pointer, 80, 80)
 }
 function createHouse1 () {
     house1 = sprites.create(img`
@@ -446,7 +452,12 @@ function createPopUps () {
     house1popUp.z = 80
     house1popUp.setFlag(SpriteFlag.Invisible, true)
     sprites.setDataBoolean(house1popUp, "invisible", true)
-    house1popUp.setPosition(110, 17)
+    house1popUp.setPosition(110, 20)
+    PopUp1X = sprites.create(assets.image`10`, SpriteKind.X)
+    PopUp1X.setPosition(125, 5)
+    PopUp1X.setFlag(SpriteFlag.Invisible, true)
+    PopUp1X.setFlag(SpriteFlag.Ghost, true)
+    PopUp1X.z = 85
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, otherSprite) {
     if (Math.percentChance(75) && house1chickens < 25) {
@@ -465,6 +476,7 @@ let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
 let rallyPoint1: Sprite = null
+let PopUp1X: Sprite = null
 let house1popUp: Sprite = null
 let house1: Sprite = null
 let house1chickens = 0
