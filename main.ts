@@ -341,6 +341,67 @@ function createHouse1 () {
         feeeeeeeefffffffffffffffeeeeeeeefff...............
         fffffffffffffffffffffffffffffffff.................
         `, SpriteKind.house)
+    house1IMG = [img`
+        fffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeeef
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeeeff.
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeeeff...
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeeeff.....
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeeeff.......
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeeeff.........
+        feeeeeeeefffffffffffffffeeeeeeeefeeeeff...........
+        feeeeeeeefffffffffffffffeeeeeeeefeeff.............
+        feeeeeeeefffffffffffffffeeeeeeeefff...............
+        fffffffffffffffffffffffffffffffff.................
+        `, img`
+        fffffffffffffffffffffffffffffffff8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f8888888888888888888888888888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f8888888888888888f
+        f88888888fffffffffffffff88888888f88888888888888ff.
+        f88888888fffffffffffffff88888888f888888888888ff...
+        f88888888fffffffffffffff88888888f8888888888ff.....
+        f88888888fffffffffffffff88888888f88888888ff.......
+        f88888888fffffffffffffff88888888f888888ff.........
+        f88888888fffffffffffffff88888888f8888ff...........
+        f88888888fffffffffffffff88888888f88ff.............
+        f88888888fffffffffffffff88888888fff...............
+        fffffffffffffffffffffffffffffffff.................
+        `]
+    sprites.setDataNumber(house1, "level", 0)
+    house1.setImage(house1IMG[sprites.readDataNumber(house1, "level")])
     house1.setPosition(85, 2)
     MaxCH1 = 25
     house1chickens = 0
@@ -473,6 +534,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vy = -55
 })
 let statsH1: StatusBarSprite = null
+let house1IMG: Image[] = []
 let rallyPoint4: Sprite = null
 let rallyPoint3: Sprite = null
 let rallyPoint2: Sprite = null
