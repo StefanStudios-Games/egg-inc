@@ -548,16 +548,23 @@ function createPopUps () {
     PopUp1upg.z = 85
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point3, function (sprite, otherSprite) {
-    if (Math.percentChance(75) && house1chickens < 25) {
+    if (house1chickens < MaxCH1) {
         sprite.vx = 0
         sprite.vy = -55
     } else {
-        pause(200)
+        if (house2chickens < 25) {
+            pause(200)
+        } else {
+            sprite.vx = 0
+            sprite.vy = -55
+        }
     }
 })
 function upgradeHouse1 () {
+    MaxCH1 += 40
     sprites.setDataNumber(house1, "level", sprites.readDataNumber(house1, "level") + 1)
     house1.setImage(house1IMG[sprites.readDataNumber(house1, "level")])
+    statsH1.value = Math.map(house1chickens, 0, MaxCH1, 0, 100)
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, otherSprite) {
     sprite.vx = 0
