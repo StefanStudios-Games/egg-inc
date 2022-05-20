@@ -10,6 +10,7 @@ namespace SpriteKind {
     export const pointer = SpriteKind.create()
     export const X = SpriteKind.create()
     export const Upgrade = SpriteKind.create()
+    export const truck = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.house2, function (sprite, otherSprite) {
     pause(200)
@@ -809,3 +810,43 @@ createHouse2()
 createRallyPoints()
 createPopUps()
 createPointer()
+let truck = sprites.create(img`
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ........................................
+    ..............ff........................
+    .............fff........................
+    .............ff.........................
+    ............fffffffffffffffffffffffffff.
+    ............fccccccc11ccccccfcccccccccf.
+    ...........ffccccccc1cccccccfcccccccccf.
+    ..........fefccc1ccc11ccccccfcccccccccf.
+    .........ffffcc111cc1cc11c11fcccccccccf.
+    ........feeefc11111c11c11c11fcccccccccf.
+    .....ffff66efc11111ccccc1cc1fffcccccfff.
+    ....feeef66efc11111cccc11c11f5fcccccf5f.
+    ...feeeef66efc11111cccccccccfffcccccfff.
+    ..ffffffeeeefc11111cccccccccf2fcccccf2f.
+    ..feeeeeeeeefcc111ccccccccccfffcccccfff.
+    ..feeeeeeeeefcccccccccccccccfcccccccccf.
+    ..feeefffeeefcccccccccccfffcfcccccccccf.
+    ..feef111feefccccccccccf111ffcccccccccf.
+    ..fff1fff1fffffffffffff1fff1fffffffffff.
+    .....1fff1.............1fff1.....1fff1..
+    .....1fff1.............1fff1......111...
+    ......111...............111.............
+    `, SpriteKind.truck)
+truck.setPosition(175, 110)
+truck.setVelocity(-45, -1)
+pause(1500)
+truck.setVelocity(0, 0)
+pause(1000)
+truck.setVelocity(-35, -1)
+pause(3500)
+truck.destroy()
