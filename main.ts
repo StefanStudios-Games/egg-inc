@@ -805,6 +805,7 @@ clickr = sprites.create(img`
     .........ffffffffffffffffffffffffffffffffffffffffffffffffffff.........
     `, SpriteKind.Player)
 clickr.setPosition(40, 105)
+clickr.z = 80
 createHouse1()
 createHouse2()
 createRallyPoints()
@@ -842,6 +843,7 @@ let truck = sprites.create(img`
     .....1fff1.............1fff1......111...
     ......111...............111.............
     `, SpriteKind.truck)
+clickr.z = 50
 truck.setPosition(175, 110)
 truck.setVelocity(-45, -1)
 pause(1500)
