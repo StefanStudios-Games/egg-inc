@@ -544,6 +544,9 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         . . . . . . . f f . . . 
         `)
 })
+function Sell () {
+    info.changeScoreBy(Math.round((house1chickens + house2chickens) / 2))
+}
 sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point2, function (sprite, otherSprite) {
     sprite.vx = -55
     sprite.vy = 0
@@ -850,6 +853,7 @@ forever(function () {
     truck.setPosition(175, 110)
     truck.setVelocity(-45, -1)
     pause(1500)
+    Sell()
     truck.setVelocity(0, 0)
     pause(1000)
     truck.setVelocity(-35, -1)
