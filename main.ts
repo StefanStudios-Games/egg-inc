@@ -638,6 +638,7 @@ sprites.onOverlap(SpriteKind.chicken, SpriteKind.Point1, function (sprite, other
     sprite.vx = 0
     sprite.vy = -55
 })
+let truck: Sprite = null
 let statsH1: StatusBarSprite = null
 let house1IMG: Image[] = []
 let rallyPoint4: Sprite = null
@@ -811,44 +812,47 @@ createHouse2()
 createRallyPoints()
 createPopUps()
 createPointer()
-let truck = sprites.create(img`
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ........................................
-    ..............ff........................
-    .............fff........................
-    .............ff.........................
-    ............fffffffffffffffffffffffffff.
-    ............fccccccc11ccccccfcccccccccf.
-    ...........ffccccccc1cccccccfcccccccccf.
-    ..........fefccc1ccc11ccccccfcccccccccf.
-    .........ffffcc111cc1cc11c11fcccccccccf.
-    ........feeefc11111c11c11c11fcccccccccf.
-    .....ffff66efc11111ccccc1cc1fffcccccfff.
-    ....feeef66efc11111cccc11c11f5fcccccf5f.
-    ...feeeef66efc11111cccccccccfffcccccfff.
-    ..ffffffeeeefc11111cccccccccf2fcccccf2f.
-    ..feeeeeeeeefcc111ccccccccccfffcccccfff.
-    ..feeeeeeeeefcccccccccccccccfcccccccccf.
-    ..feeefffeeefcccccccccccfffcfcccccccccf.
-    ..feef111feefccccccccccf111ffcccccccccf.
-    ..fff1fff1fffffffffffff1fff1fffffffffff.
-    .....1fff1.............1fff1.....1fff1..
-    .....1fff1.............1fff1......111...
-    ......111...............111.............
-    `, SpriteKind.truck)
-clickr.z = 50
-truck.setPosition(175, 110)
-truck.setVelocity(-45, -1)
-pause(1500)
-truck.setVelocity(0, 0)
-pause(1000)
-truck.setVelocity(-35, -1)
-pause(3500)
-truck.destroy()
+forever(function () {
+    pause(5000)
+    truck = sprites.create(img`
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ........................................
+        ..............ff........................
+        .............fff........................
+        .............ff.........................
+        ............fffffffffffffffffffffffffff.
+        ............fccccccc11ccccccfcccccccccf.
+        ...........ffccccccc1cccccccfcccccccccf.
+        ..........fefccc1ccc11ccccccfcccccccccf.
+        .........ffffcc111cc1cc11c11fcccccccccf.
+        ........feeefc11111c11c11c11fcccccccccf.
+        .....ffff66efc11111ccccc1cc1fffcccccfff.
+        ....feeef66efc11111cccc11c11f5fcccccf5f.
+        ...feeeef66efc11111cccccccccfffcccccfff.
+        ..ffffffeeeefc11111cccccccccf2fcccccf2f.
+        ..feeeeeeeeefcc111ccccccccccfffcccccfff.
+        ..feeeeeeeeefcccccccccccccccfcccccccccf.
+        ..feeefffeeefcccccccccccfffcfcccccccccf.
+        ..feef111feefccccccccccf111ffcccccccccf.
+        ..fff1fff1fffffffffffff1fff1fffffffffff.
+        .....1fff1.............1fff1.....1fff1..
+        .....1fff1.............1fff1......111...
+        ......111...............111.............
+        `, SpriteKind.truck)
+    clickr.z = 50
+    truck.setPosition(175, 110)
+    truck.setVelocity(-45, -1)
+    pause(1500)
+    truck.setVelocity(0, 0)
+    pause(1000)
+    truck.setVelocity(-35, -1)
+    pause(3500)
+    truck.destroy()
+})
