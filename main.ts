@@ -79,6 +79,46 @@ function create_chicken () {
         . . . . f . f . . 
         . . . f f f f . . 
         `, -55, 0)
+    chicken.setImage(img`
+        . . . f f f f . . . . 
+        . . f 2 2 2 f . . . . 
+        . . f 2 2 2 f . . . . 
+        . f 1 1 1 1 1 f . . . 
+        f 1 1 1 1 1 1 1 f . . 
+        f 1 f 1 1 f 1 1 f f f 
+        f 1 f 1 1 f 1 1 f 1 f 
+        f 1 4 4 1 1 1 1 1 1 f 
+        f 1 1 2 1 1 1 1 1 1 f 
+        f 1 1 2 1 1 1 1 1 1 f 
+        . f 1 1 1 1 1 1 1 f . 
+        . . f 4 f f 4 f f . . 
+        . . f f . . f f . . . 
+        `)
+    chicken.setImage(img`
+        . f f f . . . . . . 
+        f 2 2 4 f . . . . . 
+        . f 1 1 f . . . f f 
+        f 5 f 1 f . . f 1 f 
+        f 4 1 1 1 f f 1 1 f 
+        f 2 1 1 1 1 1 1 1 f 
+        . f d 1 1 1 1 1 1 f 
+        . f d d 1 1 1 1 d f 
+        . . f d d d d d f . 
+        . . . f 4 5 f f . . 
+        . . . f f f . . . . 
+        `)
+    chicken.setImage(img`
+        . . f f . . . . . 
+        . f 1 1 f . . . . 
+        5 5 1 1 1 f . . . 
+        . . f 1 1 1 f f . 
+        . . f 1 1 1 d 1 f 
+        . . f 1 d 1 1 d f 
+        . . . f 1 d d 1 f 
+        . . . f f f f f f 
+        . . . . f . f . . 
+        . . . f f f f . . 
+        `)
     chicken.setKind(SpriteKind.chicken)
     chicken.setPosition(143, randint(70, 78))
     animation.runImageAnimation(
