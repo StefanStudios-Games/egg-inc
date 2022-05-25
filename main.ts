@@ -884,11 +884,11 @@ forever(function () {
     clickr.z = 50
     truck.setPosition(175, 102)
     truck.setVelocity(-45, -2)
-    pause(1500)
+    pause(2000)
     Sell()
     truck.setVelocity(0, 0)
     pause(1000)
     truck.setVelocity(-35, -2)
-    pause(3500)
+    pause(3000)
     truck.destroy()
 })
